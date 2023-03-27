@@ -14,10 +14,8 @@ const Item = styled.div`
 `;
 
 const TransactionItem = ({ transaction }) => {
-  console.log("inside item", transaction);
-
   return (
-    <Item isExpense={transaction?.transType==="expense"}>
+    <Item isExpense={transaction?.transType === "expense"}>
       <span>{transaction.details}</span>
       <span>${transaction.amount}</span>
     </Item>

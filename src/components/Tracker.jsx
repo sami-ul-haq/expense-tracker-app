@@ -7,13 +7,13 @@ import TransactionsContainer from "./TransactionsContainer";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 600px;
-  margin: 0 auto;
+  width: 600px;
+  max-width: 100%;
   background-color: aliceblue;
   padding: 30px 20px;
   border: 1px solid #000;
   border-radius: 5px;
-  margin-top: 10px;
+  margin: 10px;
 `;
 
 const Heading = styled.h1`
@@ -50,12 +50,18 @@ const IncomeBox = styled(ExpenseBox)``;
 const Tracker = () => {
   const [toggle, setToggle] = useState(false);
   const [transactions, setTransactions] = useState([
-    {
-      amount: 1000,
-      details: "buy shoes",
-      transType: "expense",
-      id: Date.now(),
-    },
+    // {
+    //   amount: 1000,
+    //   details: "buy shoes",
+    //   transType: "expense",
+    //   id: Date.now(),
+    // },
+    // {
+    //   amount: 2000,
+    //   details: "cloths shoes",
+    //   transType: "expense",
+    //   id: Date.now() + 1,
+    // },
   ]);
 
   const [expense, setExpense] = useState(0);
@@ -85,12 +91,15 @@ const Tracker = () => {
     calculateTransactions();
   }, [transactions]);
 
-  console.log(transactions);
-
   return (
     <Container>
       <Heading>Expense Tracker</Heading>
-      <OverviewComponent toggle={toggle} setToggle={setToggle} expense={expense} income={income}/>
+      <OverviewComponent
+        toggle={toggle}
+        setToggle={setToggle}
+        expense={expense}
+        income={income}
+      />
 
       {toggle && (
         <AddTransaction

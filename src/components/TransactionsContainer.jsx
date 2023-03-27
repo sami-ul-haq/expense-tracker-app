@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import TransactionItem from "./TransactionItem";
 
@@ -24,8 +24,23 @@ const TransactionItems = styled.div``;
 
 const TransactionsContainer = ({ transactions }) => {
   const [searchInput, setSearchInput] = useState("");
+  const [filteredTransactions, setFilteredTransactions] =
+    useState(transactions);
 
-  console.log("inside", transactions);
+  const filteredData = (searchInput) => {
+    if (!searchInput || !searchInput.trim().length) {
+      setFilteredTransactions(transactions);
+      return;
+    }
+
+    let filtered = [...filteredTransactions];
+    filtered = filtered.filter((item) => item.details.toLowerCase().includes(searchInput.toLowerCase().trim()));
+    setFilteredTransactions(filtered);
+  };
+
+  useEffect(() => {
+    filteredData(searchInput);
+  }, [transactions, searchInput]);
 
   return (
     <Container>
@@ -39,8 +54,8 @@ const TransactionsContainer = ({ transactions }) => {
       />
 
       <TransactionItems>
-        {transactions?.length ? (
-          transactions.map((transaction) => (
+        {filteredTransactions?.length ? (
+          filteredTransactions.map((transaction) => (
             <TransactionItem transaction={transaction} key={transaction.id} />
           ))
         ) : (

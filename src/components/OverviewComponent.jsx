@@ -25,7 +25,7 @@ const AddBtn = styled.button`
   border-radius: 5px;
 `;
 
-const OverviewComponent = ({ toggle, setToggle, income, expense}) => {
+const OverviewComponent = ({ toggle, setToggle, income, expense }) => {
   const bal = income - expense;
 
   return (

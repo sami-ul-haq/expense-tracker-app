@@ -24,13 +24,13 @@ const RadioContainer = styled.div`
   justify-content: center;
 `;
 
-const RadioBtn = styled(RadioContainer)`
-  margin: 10px 20px 10px 0;
-`;
-
 const Label = styled.label`
   margin-left: 10px;
   cursor: pointer;
+`;
+
+const RadioBtn = styled(RadioContainer)`
+  margin: 10px 20px 10px 0;
 `;
 
 const SubmitBtn = styled.button`
